@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>{% block title %}{% endblock%}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light p-3">
+        <a class="navbar-brand pl-3" href="/" style="font-size: 2rem;">Gait Prodict</a>
+    </nav>
+    {% block body %}{% endblock %}
+    {% block content %}{% endblock %}
+
+    <div class="fixed-bottom fmx-0 bg-black bg-opacity-75 text-center text-white" >
+         <h5>@ Yuji Mizuno</h5>
+    </div>
+</body>
+
+</html>

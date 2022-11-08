@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{%  endblock %}
+
+{% block headlinde %}
+{% endblock %}
+
+{% block content %}
+<P>{{ message }}</p>
+<table>
+    <tr>
+        <th>2回目以降の歩行状態の推移です</th>
+    </tr>
+        <th>data3</th>
+        <td>
+            <input type = "number" name = "data3" >
+        </td>
+    </tr>
+    <tr>
+        <th>data4</th>
+        <td>
+            <input type = "number" name = "data4" >
+        </td>
+    </tr>
+</table>
+</form>
+{% endblock  %}
+{% block footer %}
+{% endblock%}

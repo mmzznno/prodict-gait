@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{%  endblock %}
+
+{% block headlinde %}
+{% endblock %}
+
+{% block content %}
+<P>{{ message }}</p>
+<table>
+    <tr>
+        <th>患者IDを入力ください</th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <td>
+            <input type = "text" name = "id" >
+        </td>
+    </tr>
+    <tr>
+        <th>性別を入力を選んでください</th>
+    </tr>
+    <tr>
+        <th>SEX</th>
+        <td>
+            <input type = "radio" name = "gender" value = '0' >男性
+            <input type = "radio" name = "gender" value = '1' >女性
+        </td>
+    </tr>
+    <tr>
+        <th>検査回数を選んでください</th>
+    </tr>
+    <tr>
+        <th>回数</th>
+        <td>
+            <input type = "radio" name = "count" value = '1' >1回目
+            <input type = "radio" name = "count" value = '2' >2回目  
+            <input type = "radio" name = "count" value = '3' >3回目
+            <input type = "radio" name = "count" value = '4' >4回目 
+            <input type = "radio" name = "count" value = '5' >5回目 
+        </td>
+    </tr>
+    <tr>
+        <th>血液データを入力してください</th>
+    </tr>
+        <th>ALB</th>
+        <td>
+            <input type = "number" name = "ALB" >
+        </td>
+    </tr>
+    <tr>
+        <th>AST</th>
+        <td>
+            <input type = "number" name = "AST" >
+        </td>
+    </tr>
+    <tr>
+        <th>γ-GTP</th>
+        <td>
+            <input type = "number" name = "γ-GTP" >
+        </td>
+    </tr>
+
+    <tr>
+        <th>L-LDL</th>
+        <td>
+            <input type = "number" name = "L-LDL" >
+        </td>
+    </tr>
+    <tr>
+        <th>HBA1C</th>
+        <td>
+            <input type = "number" name = "HBA1c" >
+        </td>
+    </tr>
+    <tr>
+        <th>HEMO</th>
+        <td>
+            <input type = "number" name = "HEMO" >
+        </td>
+    </tr>
+    <tr>
+        <th>CRP</th>
+        <td>
+            <input type = "number" name = "CRP" >
+        </td>
+    </tr>
+    <tr>
+        <th>CRE</th>
+        <td>
+            <input type = "number" name = "CRE" >
+        </td>
+    </tr>
+</table>
+</form>
+<form action="/next" method="get">
+        <input type="submit" value='next'>
+</form>
+{% endblock  %}
+{% block footer %}
+{% endblock%}
