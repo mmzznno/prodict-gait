@@ -1,8 +1,9 @@
 from datetime import datetime, date
-from email import message
+import pandas as pd
+import codecs
 
 
-from flask import Flask, render_template, request, redirect, url_for # url_forを追加する
+from flask import Flask, render_template, request, session,redirect, url_for ,session
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -10,21 +11,37 @@ app = Flask(__name__)
 @app.route('/', methods=['GET','POST'])
 
 def index():
+  
+    if request.method == 'GET':
     
-    return render_template('index.html',
+       return render_template('index.html',
                            
        title = "Gait Prodict",
        message = "退院前の歩行予測をするアプリです",
-     
-     #データのチェックをした方がいいか？  
-     #全データを入力していないと警告文とか                
-     
-       id = request.form.get('id'),
-       data1= request.form.get('data1'),
-       data2= request.form.get('data2'),
-
-       )
+    ) 
+     #1データのチェックをした方がいいか？  
+     #2全データを入力していないと次の画面に進めないようにする  
+                  
+    if request.method == 'post': 
+                                         
+       pati_id = request.form.get('id')
+        
+       sex= request.form.get('gender')
+           
+       count= request.form.get('count')
+       
+       # データフレームを作成
+       df = pd.DataFrame( [pati_id, sex, count],
+       columns=['id', 'sex', 'count'])
+ 
+      # CSV ファイル (employee.csv) として出力
+       print("df")
+       print(df)
+       df.to_csv("pati_data.csv", encoding='utf-8')
       
+    return render_template('index.html')
+      
+    
       # 一時保存
       #new_post = Post(id=id, data1=data1, data2=data2)
       #db.session.add(new_post)
@@ -58,6 +75,27 @@ def sub():
       title = "Gait Prodict",
       message = "予測結果です"
       )
+    
+#訓練データを読み込む
+#テストデータ作成中
+
+gait = pd.read_csv("blood_data2.csv",encoding='utf-8') 
+print(gait.head())
+
+print("test")   
+
+#訓練用をテストを分割する
+#予測モデル作成
+
+#精度の評価
+
+#入力データから予測を実施
+
+#グラフを作成
+
+#精度を表示
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
