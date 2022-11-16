@@ -9,14 +9,17 @@
 
 {% block content %}
 <P>{{ message }}</p>
-<table>
+<form action = "/sub"  method="POST">
+    <table>
+    <form action = "/sub"  method="POST">
     <tr>
+        <form action = "/sub"  method="POST">
         <th>リハビリ総合実施計画書の項目を入力してください</th>
         <tr>
             <th>麻痺側</th>
             <td>
-                <input type = "radio" name = "gender" value = '0' >右
-                <input type = "radio" name = "gender" value = '1' >左
+                <input type = "radio" name = "para" value = '0' >右
+                <input type = "radio" name = "para" value = '1' >左
             </td>
         </tr>
     <tr>
@@ -102,15 +105,15 @@
                 <input type = "radio" name = "expre" value = '7' >7
             </td>
         </tr>
+    </form>
     </tr>
 </table>
+  <input type="submit" value='submit'>
 </form>
-<form action="/" method="get">
+<form action="/" method="POST">
         <input type="submit" value='back'>
 </form>
-<form action="/sub" method="get">
-    <input type="submit" value='submit'>
-</form>
+
 {% endblock  %}
 {% block footer %}
 {% endblock%}
