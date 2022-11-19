@@ -10,110 +10,123 @@
 {% block content %}
 <P>{{ message }}</p>
 <form action = "/sub"  method="POST">
-    <table>
-    <form action = "/sub"  method="POST">
-    <tr>
-        <form action = "/sub"  method="POST">
-        <th>リハビリ総合実施計画書の項目を入力してください</th>
+    <table> 
+        <th>■リハビリ総合実施計画書の項目を入力してください</th>
         <tr>
             <th>麻痺側</th>
             <td>
-                <input type = "radio" name = "para" value = '0' >右
-                <input type = "radio" name = "para" value = '1' >左
+                <input type = "radio" name = "para" value = '1' required>右
+                <input type = "radio" name = "para" value = '2' required>左
             </td>
         </tr>
-    <tr>
         <tr>
-             <th>ブルンストロームステージ</th>
+             <th>ブルンストロームステージ上肢</th>
                 <td>
-                    <input type = "radio" name = "stage" value = '1' >Ⅰ
-                    <input type = "radio" name = "stage" value = '2' >Ⅱ
-                    <input type = "radio" name = "stage" value = '3' >Ⅲ
-                    <input type = "radio" name = "stage" value = '4' >Ⅳ
-                    <input type = "radio" name = "stage" value = '5' >Ⅴ
-                    <input type = "radio" name = "stage" value = '6' >Ⅵ
+                    <input type = "radio" name = "stage-a" value = '1' required>Ⅰ
+                    <input type = "radio" name = "stage-a" value = '2' required>Ⅱ
+                    <input type = "radio" name = "stage-a" value = '3' required>Ⅲ
+                    <input type = "radio" name = "stage-a" value = '4' required>Ⅳ
+                    <input type = "radio" name = "stage-a" value = '5' required>Ⅴ
+                    <input type = "radio" name = "stage-a" value = '6' required>Ⅵ
                 </td>
         <tr>
+            <th>ブルンストロームステー手指</th>
+               <td>
+                   <input type = "radio" name = "stage-b" value = '1' required>Ⅰ
+                   <input type = "radio" name = "stage-b" value = '2' required>Ⅱ
+                   <input type = "radio" name = "stage-b" value = '3' required>Ⅲ
+                   <input type = "radio" name = "stage-b" value = '4' required>Ⅳ
+                   <input type = "radio" name = "stage-b" value = '5' required>Ⅴ
+                   <input type = "radio" name = "stage-b" value = '6' required>Ⅵ
+               </td>
+       <tr>
+            <th>ブルンストロームステー下肢</th>
+               <td>
+                   <input type = "radio" name = "stage-c" value = '1' required>Ⅰ
+                   <input type = "radio" name = "stage-c" value = '2' required>Ⅱ
+                   <input type = "radio" name = "stage-c" value = '3' required>Ⅲ
+                   <input type = "radio" name = "stage-c" value = '4' required>Ⅳ
+                   <input type = "radio" name = "stage-c" value = '5' required>Ⅴ
+                   <input type = "radio" name = "stage-c" value = '6' required>Ⅵ
+               </td>
+       <tr>
                 <th>食事</th>
                 <td>
-                    <input type = "radio" name = "eat" value = '1' >1
-                    <input type = "radio" name = "eat" value = '2' >2
-                    <input type = "radio" name = "eat" value = '3' >3
-                    <input type = "radio" name = "eat" value = '4' >4
-                    <input type = "radio" name = "eat" value = '5' >5
-                    <input type = "radio" name = "eat" value = '6' >6
-                    <input type = "radio" name = "eat" value = '7' >7
+                    <input type = "radio" name = "eat" value = '1' required>1
+                    <input type = "radio" name = "eat" value = '2' required>2
+                    <input type = "radio" name = "eat" value = '3' required>3
+                    <input type = "radio" name = "eat" value = '4' required>4
+                    <input type = "radio" name = "eat" value = '5' required>5
+                    <input type = "radio" name = "eat" value = '6' required>6
+                    <input type = "radio" name = "eat" value = '7' required>7
                 </td>
         </tr>
         <tr>
             <th>歩行</th>
             <td>
-                <input type = "radio" name = "gait" value = '1' >1
-                <input type = "radio" name = "gait" value = '2' >2
-                <input type = "radio" name = "gait" value = '3' >3
-                <input type = "radio" name = "gait" value = '4' >4
-                <input type = "radio" name = "gait" value = '5' >5
-                <input type = "radio" name = "gait" value = '6' >6
-                <input type = "radio" name = "gait" value = '7' >7
+                <input type = "radio" name = "gait" value = '1' required>1
+                <input type = "radio" name = "gait" value = '2' required>2
+                <input type = "radio" name = "gait" value = '3' required>3
+                <input type = "radio" name = "gait" value = '4' required>4
+                <input type = "radio" name = "gait" value = '5' required>5
+                <input type = "radio" name = "gait" value = '6' required>6
+                <input type = "radio" name = "gait" value = '7' required>7
             </td>
         </tr>
         <tr>
             <th>排尿コントロール</th>
             <td>
-                <input type = "radio" name = "void" value = '1' >1
-                <input type = "radio" name = "void" value = '2' >2
-                <input type = "radio" name = "void" value = '3' >3
-                <input type = "radio" name = "void" value = '4' >4
-                <input type = "radio" name = "void" value = '5' >5
-                <input type = "radio" name = "void" value = '6' >6
-                <input type = "radio" name = "void" value = '7' >7
+                <input type = "radio" name = "void" value = '1' required>1
+                <input type = "radio" name = "void" value = '2' required>2
+                <input type = "radio" name = "void" value = '3' required>3
+                <input type = "radio" name = "void" value = '4' required>4
+                <input type = "radio" name = "void" value = '5' required>5
+                <input type = "radio" name = "void" value = '6' required>6
+                <input type = "radio" name = "void" value = '7' required>7
             </td>
         </tr>
         <tr>
             <th>排便コントロール</th>
             <td>
-                <input type = "radio" name = "defe" value = '1' >1
-                <input type = "radio" name = "defe" value = '2' >2
-                <input type = "radio" name = "defe" value = '3' >3
-                <input type = "radio" name = "defe" value = '4' >4
-                <input type = "radio" name = "defe" value = '5' >5
-                <input type = "radio" name = "defe" value = '6' >6
-                <input type = "radio" name = "defe" value = '7' >7
+                <input type = "radio" name = "defe" value = '1' required>1
+                <input type = "radio" name = "defe" value = '2' required>2
+                <input type = "radio" name = "defe" value = '3' required>3
+                <input type = "radio" name = "defe" value = '4' required>4
+                <input type = "radio" name = "defe" value = '5' required>5
+                <input type = "radio" name = "defe" value = '6' required>6
+                <input type = "radio" name = "defe" value = '7' required>7
             </td>
         </tr>
         <tr>
             <th>理解</th>
             <td>
-                <input type = "radio" name = "under" value = '1' >1
-                <input type = "radio" name = "under" value = '2' >2
-                <input type = "radio" name = "under" value = '3' >3
-                <input type = "radio" name = "under" value = '4' >4
-                <input type = "radio" name = "under" value = '5' >5
-                <input type = "radio" name = "under" value = '6' >6
-                <input type = "radio" name = "under" value = '7' >7
+                <input type = "radio" name = "under" value = '1' required>1
+                <input type = "radio" name = "under" value = '2' required>2
+                <input type = "radio" name = "under" value = '3' required>3
+                <input type = "radio" name = "under" value = '4' required>4
+                <input type = "radio" name = "under" value = '5' required>5
+                <input type = "radio" name = "under" value = '6' required>6
+                <input type = "radio" name = "under" value = '7' required>7
             </td>
         </tr>
         <tr>
             <th>表出</th>
             <td>
-                <input type = "radio" name = "expre" value = '1' >1
-                <input type = "radio" name = "expre" value = '2' >2
-                <input type = "radio" name = "expre" value = '3' >3
-                <input type = "radio" name = "expre" value = '4' >4
-                <input type = "radio" name = "expre" value = '5' >5
-                <input type = "radio" name = "expre" value = '6' >6
-                <input type = "radio" name = "expre" value = '7' >7
+                <input type = "radio" name = "expre" value = '1' required>1
+                <input type = "radio" name = "expre" value = '2' required>2
+                <input type = "radio" name = "expre" value = '3' required>3
+                <input type = "radio" name = "expre" value = '4' required>4
+                <input type = "radio" name = "expre" value = '5' required>5
+                <input type = "radio" name = "expre" value = '6' required>6
+                <input type = "radio" name = "expre" value = '7' required>7
             </td>
         </tr>
-    </form>
-    </tr>
-</table>
-  <input type="submit" value='submit'>
+    </table>
+        <input type="submit" value='submit'>
 </form>
-<form action="/" method="POST">
-        <input type="submit" value='back'>
+<form action="/back" method="POST">
+    <input type="submit" value='back'>
 </form>
-
 {% endblock  %}
 {% block footer %}
 {% endblock%}
