@@ -10,16 +10,91 @@
 {% block content %}
 <P>{{ message }}</p>
 <table>
-    <tr>
-        <th>退院までの歩行能力の確率です</th>
-    <tr>
-        <th>説明・注意</th> 
-    </tr> 
+        <tr>
+        <th >歩行グレード</th>
+        <th>　　確率　</th>
+        </tr> 
+        <tr>
+            <th>
+            {% for grade_dis  in data1 %}
+        
+            {{ grade_dis }}
+    
+            {% endfor %}
+            </th>
+        
+            <th>
+            {% for proba_dis  in data2 %}
+
+            {{ proba_dis }}
+
+            {% endfor %} 
+            </th>
+    
+        </tr> 
+</table>
+    <p>　</p>
+<table>
+        <tr>
+        <th >グレード1</th>
+        <th >2名が最大介助15メートル未満</th>
+        </tr>
+
+        <tr>
+        <th >グレード2</th>
+        <th >1名の介助で15メートル以上歩行可能</th>
+        </tr>
+        <tr>  
+        <th >グレード3</th>
+        <th >足の振出し介助で50メートル以上歩行可能</th>
+        </tr>
+        
+        <tr>
+        <th >グレード4</th>
+        <th >軽度の介助で50メートル以上歩行可能</th>
+        </tr>
+        
+        <tr>
+        <th >グレード5</th>
+        <th >監視で50メートル以上歩行可能</th>
+        </tr>
+        
+        <tr>
+        <th >グレード6</th>
+        <th >杖や歩行器を使用し50メートル以上歩行可能</th>
+        </tr>
+
+        <tr>
+        <th >グレード7</th>
+        <th >介助者なしで自立した歩行</th>
+        </tr>
+</table>
+<table>
+    <p>　</p>
     <tr>    
-        <th>※脳梗塞患者の血液データ・機能的自立度から予測した結果です</th>
+        <th>注1：インドネシア私立病院の50人分の血液データと　　</th>
+    </tr>
+    <tr>    
+        <th>脳梗塞患者の機能的自立度を結合させて予測した結果です</th>
+    </tr>
+    <tr>    
+        <th>注2：多項式ロジスティック回帰モデルを使用しています</th>
+    </tr>
+    
+    <tr>    
+        <th>本回帰モデルの正解率は
+        
+            {% for acc_dis  in data3 %}
+        
+            {{ acc_dis }}
+    
+            {% endfor %} 
+        </th>
+    </tr>
+    <tr>    
+        <th>注3：なお車椅子移動のアルゴリズムは含まれていません</th>
     </tr>
 </table>
-</form>
 {% endblock  %}
 {% block footer %}
 {% endblock%}
