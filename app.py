@@ -1,13 +1,18 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from flask import Flask, render_template, request,redirect, url_for 
+from flask import Flask, render_template, request,redirect, url_for,session 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from sklearn.metrics import accuracy_score
+from datetime import timedelta
 
 app = Flask(__name__)
+
+app.secret_key = 'abcdefghijklmn'
+app.permanent_session_lifetime = timedelta(minutes=3) 
+
 
 @app.route('/', methods=['GET','POST'])
 
@@ -36,46 +41,65 @@ def index():
 def next():
     
     if request.method == "POST": 
+      
+      session.permanent = True
  
- #血液データを取得       
+ #血液データを取得(セッション値）)       
       pati_id = request.form.get("pati_id")
+      
+      #tst
+      session["id"] = pati_id 
+      
       SEX = request.form.get("sex")
+      
+      session["SEX"] = SEX 
+      
       AGE = request.form.get("age")
+      
+      session["AGE"] = AGE 
+    
       COUNT = request.form.get("count")
+      
+      session["COUNT"] = COUNT
+      
       ALB = request.form.get("ALB")
+      
+      session["ALB"] = ALB
+      
       AST = request.form.get("AST")
+      
+      session["AST"] = AST
+      
       ALT = request.form.get("ALT")
+      
+      session["ALT"] = ALT
+      
       GTP = request.form.get("GTP")
+      
+      session["GTP"] = GTP
+      
       HBA1C = request.form.get("HBA1C")
+      
+      session["HBA1C"] = HBA1C
+      
       HEMO = request.form.get("HEMO")
+      
+      session["HEMO"] = HEMO
+      
       CRP = request.form.get("CRP")
+      
+      session["CRP"] = CRP
+      
       CRE = request.form.get("CRE")
+      
+      session["CRE"] = CRE
+      
        
-  #一時保存するためデータフレームへ        
-      df =pd.DataFrame(
-        data={'pati_id': [pati_id], 
-          'SEX': [SEX],
-          'AGE': [AGE],  
-          'COUNT': [COUNT],
-          'ALB' : [ALB],
-          "AST": [AST],
-          "ALT": [ALT],
-          "GTP" : [GTP],
-          "HBA1C": [HBA1C],
-          "HEMO" : [HEMO],
-          "CRP": [CRP],
-          "CRE" : [CRE],
-          }
-      )
-    #CSVファイルに退避　（計算部で使用）
-      # ディレクトリがないとエラーになるため作成
-      #dir = Path
-      #direct = dir.mkdir(parents=True, exist_ok=True)
-      
-      
+       
+      #CSVに書き出す　一時停止
       #df.to_csv('/tmp/blood_data.csv', encoding='utf-8',index=False)
       
-      df.to_csv("blood_data.csv",encoding='utf-8',index=False)         
+      #df.to_csv("blood_data.csv",encoding='utf-8',index=False)         
      
       return redirect(url_for("next")) 
      
@@ -100,8 +124,11 @@ def back():
 def sub():
   
   if request.method == "POST": 
+    
+      print("session") 
+      print(session["id"] )
       
-      blood = pd.read_csv("blood_data.csv",encoding='utf-8')
+      #blood = pd.read_csv("blood_data.csv",encoding='utf-8')
       #blood = pd.read_csv('/tmp/blood_data.csv', encoding='utf-8')
       #print(blood.head())
          
@@ -109,18 +136,19 @@ def sub():
       #print(df_train.head())
       
     #追加・削除が発生する可能性があるため、1項目ずつ代入
-      pati_id = blood.loc[:, ["pati_id"]]
-      SEX = blood.loc[:, ["SEX"]]
-      AGE = blood.loc[:, ["AGE"]]
-      COUNT = blood.loc[:, ["COUNT"]]
-      ALB = blood.loc[:, ["ALB"]]
-      AST = blood.loc[:, ["AST"]]
-      ALT = blood.loc[:, ["ALT"]]
-      GTP = blood.loc[:, ["GTP"]]
-      HBA1C = blood.loc[:, ["HBA1C"]]
-      HEMO = blood.loc[:, ["HEMO"]]
-      CRE = blood.loc[:, ["CRE"]]
-      CRP = blood.loc[:, ["CRP"]]
+      #pati_id = blood.loc[:, ["pati_id"]]
+      #SEX = blood.loc[:, ["SEX"]]
+      #AGE = blood.loc[:, ["AGE"]]
+      #COUNT = blood.loc[:, ["COUNT"]]
+      #ALB = blood.loc[:, ["ALB"]]
+      #AST = blood.loc[:, ["AST"]]
+      #ALT = blood.loc[:, ["ALT"]]
+      #GTP = blood.loc[:, ["GTP"]]
+      #HBA1C = blood.loc[:, ["HBA1C"]]
+      #HEMO = blood.loc[:, ["HEMO"]]
+      #CRE = blood.loc[:, ["CRE"]]
+      #CRP = blood.loc[:, ["CRP"]]
+
  
 #リハビリ総合実施計画書データを取得 
       
@@ -137,6 +165,37 @@ def sub():
       #print("expuress")
       #print(expre)
       
+   #セッション
+      pati_id = session["id"]
+      SEX = session["SEX"]
+      AGE = session["AGE"]
+      COUNT = session["COUNT"]
+      ALB = session["ALB"]
+      AST = session["AST"]
+      ALT = session["ALT"]
+      GTP = session["GTP"]
+      HBA1C = session["HBA1C"]
+      HEMO = session["HEMO"]
+      CRE = session["CRE"]
+      CRP = session["CRP"]
+      
+ #一時保存するためデータフレームへ        
+  df_blood = pd.DataFrame(
+        data={'pati_id': [pati_id], 
+          'SEX': [SEX],
+          'AGE': [AGE],  
+          'COUNT': [COUNT],
+          'ALB' : [ALB],
+          "AST": [AST],
+          "ALT": [ALT],
+          "GTP" : [GTP],
+          "HBA1C": [HBA1C],
+          "HEMO" : [HEMO],
+          "CRP": [CRP],
+          "CRE" : [CRE],
+          }
+      )
+      
   #入力データを統合する
   df_plan =pd.DataFrame(
         data={"SIDE" : [side],
@@ -151,8 +210,8 @@ def sub():
           "EXPREE" : [expre]} 
         )
   
-  df_plan.to_csv("plan_data.csv",encoding='utf-8',index=False)
-  df_test = pd.concat([blood, df_plan], axis=1)
+  #df_plan.to_csv("plan_data.csv",encoding='utf-8',index=False)
+  df_test = pd.concat([df_blood, df_plan], axis=1)
   
   print(df_test.shape)
   print(df_test.head())
@@ -202,7 +261,7 @@ def sub():
   #print(X.head())
   #print(df_test)
   
-  df_test.to_csv("test_data.csv")
+  #df_test.to_csv("test_data.csv")
   y_pred = model.predict_proba(df_test)
   
   print(y_pred)
